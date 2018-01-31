@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static org.junit.Assert.assertEquals;
 
 
 public class BankInsurance extends BasePage{
@@ -20,7 +21,7 @@ public class BankInsurance extends BasePage{
     WebElement tabContainer;
 
     @FindBy(xpath = "//a//img[contains(@src,'banner-zashita-traveler')]")
-    WebElement bigBannerButton;
+    public WebElement bigBannerButton;
 
     public BankInsurance(WebDriver driver){
         PageFactory.initElements(driver, this);
@@ -43,8 +44,8 @@ public class BankInsurance extends BasePage{
         }
     }
 
-        public void bigBannerButtonClick(){
-        bigBannerButton.click();
+    public  void checkTitleText(String inputData){
+        assertEquals(inputData,pageTitle.getText());
     }
 
 

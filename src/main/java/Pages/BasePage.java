@@ -5,7 +5,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-
+import static org.junit.Assert.assertEquals;
 
 public class BasePage {
 
@@ -25,9 +25,9 @@ public class BasePage {
         element.clear();
         element.sendKeys(value);
     }
-/*
+
     public void checkFillField(String value, WebElement element) {
         assertEquals(value, element.getAttribute("value"));
-    }*/
+    }
 
 }

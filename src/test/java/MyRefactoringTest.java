@@ -1,44 +1,47 @@
 import Pages.*;
+import Steps.BaseSteps;
 import org.junit.*;
 
-import static junit.framework.TestCase.assertTrue;
 
 
 
-public class MyRefactoringTest extends BaseTest {
+public class MyRefactoringTest extends BaseSteps {
 
+    @Ignore
     @Test
 
     public void newInsuranceTest() throws InterruptedException {
-        driver.get(baseUrl);
-        MainPerson mainPerson = new MainPerson(driver);
+        BaseSteps.getDriver().get(baseUrl);
+        MainPerson mainPerson = new MainPerson(BaseSteps.getDriver());
         mainPerson.selectMainMenuItem("Застраховать себя"); //наводимся на нужное меню
         mainPerson.selectSubMenuItem("Страхование путешественников"); //выбираем пункт в подменю
 
-        BankInsurance bankInsurance = new BankInsurance(driver);
+        BankInsurance bankInsurance = new BankInsurance(BaseSteps.getDriver());
 
         //проверям заголовок на странице
+        bankInsurance.checkTitleText("Страхование путешественников");
+        /*
         String actualTitle = bankInsurance.pageTitle.getText();
         String expectedTitle = "Страхование путешественников";
         assertTrue(String.format("Заголовок равен [%s]. Ожидалось - [%s]",
-                actualTitle, expectedTitle), actualTitle.contains(expectedTitle));
+                actualTitle, expectedTitle), actualTitle.contains(expectedTitle));*/
 
         bankInsurance.chooseRequestType("онлайн");
-        bankInsurance.bigBannerButtonClick();
+        bankInsurance.bigBannerButton.click();
 
         //переключаемся на новое окно
-        for (String winHandle : driver.getWindowHandles()) {
+        for (String winHandle : BaseSteps.getDriver().getWindowHandles()) {
 
-            driver.switchTo().window(winHandle);
+            BaseSteps.getDriver().switchTo().window(winHandle);
         }
 
-        TravelInsurance1step travelInsurance1step = new TravelInsurance1step(driver);
+        TravelInsurance1step travelInsurance1step = new TravelInsurance1step(BaseSteps.getDriver());
 
         //выбираем сумму страховой защиты
         travelInsurance1step.selectInsurance("Минимальная");
-        travelInsurance1step.AcceptButtonClick();
+        travelInsurance1step.acceptButton.click();
 
-        TravelInsurance2step travelInsurance2step = new TravelInsurance2step(driver);
+        TravelInsurance2step travelInsurance2step = new TravelInsurance2step(BaseSteps.getDriver());
         //вводим данные страхуемого
         travelInsurance2step.fillOurPainFields("Фамилия страхуемого","Tokugawa");
         travelInsurance2step.fillOurPainFields("Имя страхуемого","Ieyasy");
@@ -78,6 +81,7 @@ public class MyRefactoringTest extends BaseTest {
         travelInsurance2step.checkErrorMessage("Заполнены не все обязательные поля");
 
         System.out.println("Test successfully completed\n");
+        throw new InterruptedException("Что-то прервалось");
     }
 
 }

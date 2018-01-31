@@ -15,7 +15,7 @@ public class TravelInsurance1step {
         WebElement formOne;
 
         @FindBy(xpath = "//SPAN[@ng-click='save()'][text()='Оформить']")
-        WebElement acceptButton;
+        public WebElement acceptButton;
 
         public TravelInsurance1step(WebDriver driver){
             PageFactory.initElements(driver, this);
@@ -28,10 +28,6 @@ public class TravelInsurance1step {
         public void selectInsurance(String menuItem){
                 formOne.findElement(By.xpath(".//*[contains(text(),'"+menuItem+"')]")).click();
 
-        }
-
-        public void AcceptButtonClick(){
-            acceptButton.click();
         }
 
 
