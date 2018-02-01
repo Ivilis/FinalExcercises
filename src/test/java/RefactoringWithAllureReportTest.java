@@ -47,5 +47,8 @@ public class RefactoringWithAllureReportTest extends BaseSteps {
         travelInsurance2Steps.stepChooseCitizenship("гражданинРФ");
         travelInsurance2Steps.stepChooseGender("мужской");
         travelInsurance2Steps.stepFillAllFields(testData);
+        travelInsurance2Steps.stepCheckAllFields(testData);
+        travelInsurance2Steps.stepContinueButtonClick();
+        travelInsurance2Steps.stepCheckErrorMessage("Заполнены не все обязательные поля");
     }
 }

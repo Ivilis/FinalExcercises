@@ -24,6 +24,25 @@ public class TravelInsurance2Steps extends BaseSteps{
     @Step("Заполняются поля:")
     public void stepFillAllFields (HashMap<String,String> fields) {
         fields.forEach(this::stepFillField);
+    }
 
+    @Step("Проверка заполнений: поле - {0} - имеет значение - {1}")
+    public void stepCheckField (String fieldToCheck, String expectedValue) {
+        new TravelInsurance2step(BaseSteps.getDriver()).checkThemPay(fieldToCheck, expectedValue);
+    }
+
+    @Step("Проверка всех полей")
+    public void stepCheckAllFields (HashMap<String,String> fields) {
+        fields.forEach(this::stepCheckField);
+    }
+
+    @Step("Нажата кнопка - Продолжить")
+    public void stepContinueButtonClick () {
+        new TravelInsurance2step(BaseSteps.getDriver()).continueButton.click();
+    }
+
+    @Step("Выведено сообщение об обязательности заполнения ключевых полей")
+    public void stepCheckErrorMessage (String errorMessage) {
+        new TravelInsurance2step(BaseSteps.getDriver()).checkErrorMessage(errorMessage);
     }
 }
