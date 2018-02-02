@@ -19,7 +19,7 @@ public class TravelInsurance1step {
 
         public TravelInsurance1step(WebDriver driver){
             PageFactory.initElements(driver, this);
-            Wait<WebDriver> wait = new WebDriverWait(driver,10, 1000);
+            Wait<WebDriver> wait = new WebDriverWait(driver,30, 2000);
             wait.until(ExpectedConditions.visibilityOf(formOne));
             wait.until(ExpectedConditions.visibilityOf(acceptButton));
         }
