@@ -17,11 +17,6 @@
     </properties>
     <dependencies>
         <dependency>
-            <groupId>ru.yandex.qatools.allure</groupId>
-            <artifactId>allure-junit-adaptor</artifactId>
-            <version>1.5.2</version>
-        </dependency>
-        <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>${selenium.version}</version>
@@ -36,6 +31,12 @@
             <artifactId>aspectjweaver</artifactId>
             <version>${aspectj.version}</version>
         </dependency>
+        <dependency>
+            <groupId>ru.yandex.qatools.allure</groupId>
+            <artifactId>allure-cucumber-jvm-adaptor</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -45,16 +46,19 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.20.1</version>
                 <configuration>
+                    <includes>
+                        <include>**/CucumberRunner.java</include>
+                    </includes>
                     <testFailureIgnore>true</testFailureIgnore>
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
-                    <properties>
+                    <!--properties>
                         <property>
                             <name>listener</name>
-                            <value>Utils.AllureListener</value>
+                            <value>Utils.AllureReporter</value>
                         </property>
-                    </properties>
+                    </properties-->
                 </configuration>
             </plugin>
             <plugin>

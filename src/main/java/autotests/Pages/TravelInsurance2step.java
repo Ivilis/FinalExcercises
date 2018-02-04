@@ -1,4 +1,4 @@
-package Pages;
+package autotests.Pages;
 
 
 import org.openqa.selenium.By;
@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 
 
 
-public class TravelInsurance2step {
+public class TravelInsurance2step extends BasePage{
 
     @FindBy(name = "insured0_name")
     WebElement insuredName;

@@ -1,4 +1,4 @@
-package Pages;
+package autotests.Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -26,8 +26,7 @@ public class BankInsurance extends BasePage{
     public BankInsurance(WebDriver driver){
         PageFactory.initElements(driver, this);
         this.driver = driver;
-        Wait<WebDriver> wait = new WebDriverWait(driver,10, 1000);
-        wait.until(ExpectedConditions.visibilityOf(pageTitle));
+
     }
 
     //метод выбора типа заявки: онлайн/в офисе
@@ -44,8 +43,13 @@ public class BankInsurance extends BasePage{
         }
     }
 
-    public  void checkTitleText(String inputData){
+    public void checkTitleText(String inputData){
         assertEquals(inputData,pageTitle.getText());
+    }
+
+    public void waitElement () {
+        Wait<WebDriver> wait = new WebDriverWait(driver,10, 1000);
+        wait.until(ExpectedConditions.visibilityOf(pageTitle));
     }
 
 

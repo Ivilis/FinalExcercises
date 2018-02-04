@@ -1,4 +1,4 @@
-package Pages;
+package autotests.Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;

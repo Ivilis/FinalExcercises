@@ -1,8 +1,8 @@
-package Steps;
+package autotests.Steps;
 
-import Utils.TestPropertiesNew;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
+import autotests.Utils.TestPropertiesNew;
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -29,18 +29,7 @@ public class BaseSteps {
     public static Properties properties = TestPropertiesNew.getInstance().getProperties();
 
 
-    @BeforeClass
-   /* public void startScenario(){
-        System.setProperty("webdriver.chrome.driver", "stuff/chromedriver.exe");
-        driver = new ChromeDriver();
-        String baseUrl = "http://www.rgs.ru";
-        System.out.println(baseUrl);
-        driver.get(baseUrl);
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
-    }*/
-
+    @Before
     public static void setUp() throws Exception {
         switch (properties.getProperty("browser")){
             case "firefox":
@@ -60,12 +49,13 @@ public class BaseSteps {
         System.out.println(baseUrl);
         driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         driver.manage().window().maximize();
+        driver.get(baseUrl);
 
 
     }
 
 
-    @AfterClass
+    @After
     public static void tearDown() throws Exception {
         driver.quit();
 

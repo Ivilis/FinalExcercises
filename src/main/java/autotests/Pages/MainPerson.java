@@ -1,4 +1,4 @@
-package Pages;
+package autotests.Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -34,6 +34,8 @@ public class MainPerson extends BasePage{
         Wait<WebDriver> wait = new WebDriverWait(driver,10, 2000);
         wait.until(ExpectedConditions.visibilityOf(subMenu.findElement(By.xpath(".//*[contains(text(),'"+menuItem+"')]")))).click();
     }
+
+
 
 
 }
